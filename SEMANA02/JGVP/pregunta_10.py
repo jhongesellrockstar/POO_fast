@@ -1,24 +1,25 @@
-class Empresa:
-    def __init__(self, empleados):
-        self.empleados = empleados
+class Empleado:
+    def __init__(self, nombre, sueldo):
+        self.nombre = nombre
+        self.sueldo = sueldo
 
-    def empleados_con_sueldo_mayor(self, sueldo_minimo):
-        return {
-            empleado["nombre"]: empleado["sueldo"]
-            for empleado in self.empleados
-            if empleado["sueldo"] > sueldo_minimo
-        }
+
+def empleados_con_sueldo_mayor(empleados, sueldo_minimo):
+    return {
+        empleado.nombre: empleado.sueldo
+        for empleado in empleados
+        if empleado.sueldo > sueldo_minimo
+    }
 
 
 empleados = [
-    {"nombre": "Ana", "sueldo": 1200},
-    {"nombre": "Luis", "sueldo": 900},
-    {"nombre": "Marta", "sueldo": 1500},
-    {"nombre": "Jose", "sueldo": 800},
+    Empleado("Ana", 1200),
+    Empleado("Luis", 900),
+    Empleado("Marta", 1500),
+    Empleado("Jose", 800),
 ]
 
-empresa = Empresa(empleados)
-resultado = empresa.empleados_con_sueldo_mayor(1000)
+resultado = empleados_con_sueldo_mayor(empleados, 1000)
 
 print("Empleados con sueldo mayor a 1000:")
 for nombre, sueldo in resultado.items():

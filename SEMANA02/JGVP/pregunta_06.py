@@ -1,29 +1,27 @@
-class ClasificadorProductos:
-    def __init__(self, productos):
-        self.productos = productos
-
-    def clasificar(self):
-        clasificacion = {"barato": [], "medio": [], "caro": []}
-        for producto in self.productos:
-            if producto["precio"] <= 10:
-                clasificacion["barato"].append(producto["nombre"])
-            elif producto["precio"] <= 50:
-                clasificacion["medio"].append(producto["nombre"])
-            else:
-                clasificacion["caro"].append(producto["nombre"])
-        return clasificacion
+class Producto:
+    def __init__(self, nombre, precio, categoria):
+        self.nombre = nombre
+        self.precio = precio
+        self.categoria = categoria
 
 
 productos = [
-    {"nombre": "Jugo", "precio": 4, "categoria": "bebida"},
-    {"nombre": "Pizza", "precio": 18, "categoria": "comida"},
-    {"nombre": "Laptop", "precio": 1200, "categoria": "tecnologia"},
-    {"nombre": "Pan", "precio": 1, "categoria": "comida"},
-    {"nombre": "Audifonos", "precio": 55, "categoria": "tecnologia"},
+    Producto("Jugo", 4, "bebida"),
+    Producto("Pizza", 18, "comida"),
+    Producto("Laptop", 1200, "tecnologia"),
+    Producto("Pan", 1, "comida"),
+    Producto("Audifonos", 55, "tecnologia"),
 ]
 
-clasificador = ClasificadorProductos(productos)
-clasificacion = clasificador.clasificar()
+clasificacion = {"barato": [], "medio": [], "caro": []}
+
+for producto in productos:
+    if producto.precio <= 10:
+        clasificacion["barato"].append(producto.nombre)
+    elif producto.precio <= 50:
+        clasificacion["medio"].append(producto.nombre)
+    else:
+        clasificacion["caro"].append(producto.nombre)
 
 print("Clasificación por precio:")
 for categoria, nombres in clasificacion.items():

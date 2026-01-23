@@ -2,10 +2,10 @@ class InformeVentas:
     def __init__(self, ventas):
         self.ventas = ventas
 
-    def ventas_mayores(self):
+    def filtrar_ventas(self):
         return list(filter(lambda venta: venta["cantidad"] > 5, self.ventas))
 
-    def ingresos(self, ventas_filtradas):
+    def calcular_ingresos(self, ventas_filtradas):
         return list(
             map(
                 lambda venta: {
@@ -31,6 +31,6 @@ ventas = [
 ]
 
 informe = InformeVentas(ventas)
-ventas_mayores = informe.ventas_mayores()
-ingresos = informe.ingresos(ventas_mayores)
+ventas_filtradas = informe.filtrar_ventas()
+ingresos = informe.calcular_ingresos(ventas_filtradas)
 informe.imprimir_informe(ingresos)
