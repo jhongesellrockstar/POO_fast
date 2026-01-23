@@ -3,11 +3,6 @@ class Estudiante:
         self.nombre = nombre
         self.nota = nota
 
-    def estado(self):
-        if self.nota >= 11:
-            return "aprobó"
-        return "reprobó"
-
 
 estudiantes = [
     Estudiante("Ana", 15),
@@ -17,4 +12,8 @@ estudiantes = [
 ]
 
 for estudiante in estudiantes:
-    print(f"{estudiante.nombre} {estudiante.estado()} con {estudiante.nota}.")
+    if estudiante.nota >= 11:
+        estado = "aprobó"
+    else:
+        estado = "reprobó"
+    print(f"{estudiante.nombre} {estado} con {estudiante.nota}.")
