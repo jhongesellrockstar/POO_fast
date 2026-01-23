@@ -1,6 +1,13 @@
-numeros = [1, 3, 4, 6, 7, 9, 10, 12, 15]
+class ListaNumeros:
+    def __init__(self, numeros):
+        self.numeros = numeros
 
-multiplos_de_tres = list(filter(lambda numero: numero % 3 == 0, numeros))
+    def multiplos_de_tres(self):
+        return list(filter(lambda numero: numero % 3 == 0, self.numeros))
+
+
+lista = ListaNumeros([1, 3, 4, 6, 7, 9, 10, 12, 15])
+multiplos_de_tres = lista.multiplos_de_tres()
 
 print("Múltiplos de 3:")
 indice = 0

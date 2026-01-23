@@ -1,5 +1,14 @@
-def promedio(lista_numeros):
-    return sum(lista_numeros) / len(lista_numeros)
+class CalculadoraPromedio:
+    def __init__(self, listas):
+        self.listas = listas
+
+    def promedio(self, lista_numeros):
+        return sum(lista_numeros) / len(lista_numeros)
+
+    def mostrar_promedios(self):
+        for lista in self.listas:
+            resultado = self.promedio(lista)
+            print(f"Promedio de {lista}: {resultado}")
 
 
 listas = [
@@ -8,6 +17,5 @@ listas = [
     [20, 18],
 ]
 
-for lista in listas:
-    resultado = promedio(lista)
-    print(f"Promedio de {lista}: {resultado}")
+calculadora = CalculadoraPromedio(listas)
+calculadora.mostrar_promedios()

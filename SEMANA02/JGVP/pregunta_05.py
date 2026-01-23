@@ -1,8 +1,18 @@
-nombres = ["ana", "luis", "marta", "jose"]
+class ListaNombres:
+    def __init__(self, nombres):
+        self.nombres = nombres
 
-nombres_mayus = list(map(lambda nombre: nombre.upper(), nombres))
+    def a_mayusculas(self):
+        return list(map(lambda nombre: nombre.upper(), self.nombres))
 
-cantidad_letras = {nombre: len(nombre) for nombre in nombres_mayus}
+    def cantidades(self, nombres_mayus):
+        return {nombre: len(nombre) for nombre in nombres_mayus}
+
+
+lista = ListaNombres(["ana", "luis", "marta", "jose"])
+
+nombres_mayus = lista.a_mayusculas()
+cantidad_letras = lista.cantidades(nombres_mayus)
 
 print("Nombres en mayúsculas:")
 for nombre in nombres_mayus:

@@ -1,3 +1,27 @@
+class InformeVentas:
+    def __init__(self, ventas):
+        self.ventas = ventas
+
+    def ventas_mayores(self):
+        return list(filter(lambda venta: venta["cantidad"] > 5, self.ventas))
+
+    def ingresos(self, ventas_filtradas):
+        return list(
+            map(
+                lambda venta: {
+                    "producto": venta["producto"],
+                    "ingreso": venta["cantidad"] * venta["precio"],
+                },
+                ventas_filtradas,
+            )
+        )
+
+    def imprimir_informe(self, ingresos):
+        print("Informe de ventas (cantidad > 5):")
+        for item in ingresos:
+            print(f"{item['producto']}: {item['ingreso']}")
+
+
 ventas = [
     {"producto": "Cuaderno", "cantidad": 3, "precio": 5},
     {"producto": "Lapiz", "cantidad": 10, "precio": 1},
@@ -6,18 +30,7 @@ ventas = [
     {"producto": "Plumon", "cantidad": 7, "precio": 3},
 ]
 
-ventas_mayores = list(filter(lambda venta: venta["cantidad"] > 5, ventas))
-
-ingresos = list(
-    map(
-        lambda venta: {
-            "producto": venta["producto"],
-            "ingreso": venta["cantidad"] * venta["precio"],
-        },
-        ventas_mayores,
-    )
-)
-
-print("Informe de ventas (cantidad > 5):")
-for item in ingresos:
-    print(f"{item['producto']}: {item['ingreso']}")
+informe = InformeVentas(ventas)
+ventas_mayores = informe.ventas_mayores()
+ingresos = informe.ingresos(ventas_mayores)
+informe.imprimir_informe(ingresos)
